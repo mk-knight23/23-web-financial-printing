@@ -42,7 +42,8 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/41-Bank-Cheque-Generator/"
             },
             "development": {
               "optimization": false,

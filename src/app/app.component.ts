@@ -1,15 +1,19 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ChequeFormComponent } from './features/generator/components/cheque-form.component';
 import { LivePreviewComponent } from './features/generator/components/live-preview.component';
+import { SettingsPanelComponent } from './features/generator/components/settings-panel.component';
 import { ChequeService } from './core/services/cheque.service';
+import { SettingsService } from './core/services/settings.service';
+import { AudioService } from './core/services/audio.service';
+import { KeyboardService } from './core/services/keyboard.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, ChequeFormComponent, LivePreviewComponent],
+  imports: [CommonModule, ChequeFormComponent, LivePreviewComponent, SettingsPanelComponent],
   template: `
-    <div class="min-h-screen transition-colors duration-300">
+    <div class="min-h-screen transition-colors duration-300" [class.dark]="settingsService.isDarkMode()" [class.light]="!settingsService.isDarkMode()">
       <!-- Top Navigation -->
       <nav class="bg-white dark:bg-financial-800 border-b border-financial-200 dark:border-financial-700 px-6 py-4 flex justify-between items-center shadow-sm">
         <div class="flex items-center space-x-3">
@@ -21,11 +25,14 @@ import { ChequeService } from './core/services/cheque.service';
         
         <div class="flex items-center space-x-4">
           <button (click)="toggleTheme()" class="p-2 rounded-full hover:bg-financial-100 dark:hover:bg-financial-700 transition-colors">
-            @if (isDarkMode) {
+            @if (settingsService.isDarkMode()) {
               <span class="text-xl">☀️</span>
             } @else {
               <span class="text-xl">🌙</span>
             }
+          </button>
+          <button (click)="openSettings()" class="p-2 rounded-full hover:bg-financial-100 dark:hover:bg-financial-700 transition-colors">
+            <span class="text-xl">⚙️</span>
           </button>
         </div>
       </nav>
@@ -73,6 +80,8 @@ import { ChequeService } from './core/services/cheque.service';
       <footer class="mt-20 border-t border-financial-200 dark:border-financial-700 py-12 text-center text-financial-400 text-sm">
         <p>&copy; 2026 ChequeGen Architect. Built with Angular 19 & Signals.</p>
       </footer>
+
+      <app-settings-panel></app-settings-panel>
     </div>
   `,
   styles: [`
@@ -82,21 +91,45 @@ import { ChequeService } from './core/services/cheque.service';
   `]
 })
 export class App {
-  isDarkMode = true;
+  settingsService = inject(SettingsService);
+  private audioService = inject(AudioService);
+  private keyboardService = inject(KeyboardService);
 
   constructor() {
-    // Initial theme set
-    if (this.isDarkMode) {
-      document.documentElement.classList.add('dark');
+    effect(() => {
+      this.settingsService.isDarkMode();
+    });
+
+    effect(() => {
+      const action = this.keyboardService.lastAction();
+      if (action !== 'none') {
+        this.handleAction(action);
+      }
+    });
+  }
+
+  private handleAction(action: string): void {
+    switch (action) {
+      case 'help':
+        this.settingsService.toggleHelp();
+        break;
+      case 'close':
+        if (this.settingsService.showHelp()) {
+          this.settingsService.toggleHelp();
+        }
+        break;
     }
   }
 
-  toggleTheme() {
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+  toggleTheme(): void {
+    this.audioService.playClick();
+    const current = this.settingsService.theme();
+    const next: 'dark' | 'light' | 'system' = current === 'dark' ? 'light' : current === 'light' ? 'system' : 'dark';
+    this.settingsService.setTheme(next);
+  }
+
+  openSettings(): void {
+    this.audioService.playClick();
+    this.settingsService.toggleHelp();
   }
 }

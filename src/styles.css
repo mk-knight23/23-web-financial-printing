@@ -4,14 +4,36 @@
 
 :root {
   --primary: #0052cc;
+  --app-bg-light: #f5f7fa;
+  --app-bg-dark: #1f2933;
+  color-scheme: dark;
 }
 
 body {
   @apply bg-financial-50 text-financial-900;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.dark {
+  --app-bg-light: #1f2933;
+  color-scheme: dark;
+}
+
+.light {
+  --app-bg-light: #f5f7fa;
+  color-scheme: light;
 }
 
 .dark body {
   @apply bg-financial-900 text-financial-50;
+}
+
+.light body {
+  @apply bg-financial-50 text-financial-900;
+}
+
+kbd {
+  @apply px-2 py-1 text-xs font-mono bg-financial-200 dark:bg-financial-700 rounded;
 }
 
 @layer components {
