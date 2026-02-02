@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: 23-web-financial-printing
+    env: static
+    buildCommand: npm run build
+    publishPath: dist/bank-cheque-generator
+    envVars:
+      - key: NODE_VERSION
+        value: 22
