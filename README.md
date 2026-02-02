@@ -1,6 +1,19 @@
-# Web Financial Printing
+# 23 Web Financial Printing
 
 A professional, enterprise-grade bank cheque generation tool built with Angular 21. Transform financial data into pixel-perfect, print-ready documents with real-time SVG rendering.
+
+## 📦 Deployment
+
+### Render (One-Click Deploy)
+This repository includes a `render.yaml` blueprint for automated deployment:
+1. Visit [dashboard.render.com](https://dashboard.render.com)
+2. Click "New +" → "Blueprint"
+3. Connect repository: `mk-knight23/23-web-financial-printing`
+4. Render will auto-detect and apply the blueprint configuration
+
+### Manual Deployment
+- **Build Command**: `npm run build`
+- **Publish Directory**: `dist/bank-cheque-generator`
 
 ## Overview
 ChequeGen is designed for organizations and individuals who need a precise way to generate cheque drafts. It replaces legacy manual entry tools with a robust reactive system powered by Angular Signals.
