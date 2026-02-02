@@ -1,6 +1,6 @@
-# ChequeGen - High-Fidelity Bank Cheque Generator
+# Web Financial Printing
 
-A professional, enterprise-grade bank cheque generation tool built with Angular 19. Transform financial data into pixel-perfect, print-ready documents with real-time SVG rendering.
+A professional, enterprise-grade bank cheque generation tool built with Angular 21. Transform financial data into pixel-perfect, print-ready documents with real-time SVG rendering.
 
 ## Overview
 ChequeGen is designed for organizations and individuals who need a precise way to generate cheque drafts. It replaces legacy manual entry tools with a robust reactive system powered by Angular Signals.
@@ -17,10 +17,9 @@ ChequeGen is designed for organizations and individuals who need a precise way t
 | **UI/UX** | Basic Forms | **Modern Fintech UI** with Dark Mode support |
 
 ## Tech Stack
-- **Framework:** Angular 19 (Standalone Components, Signals)
-- **Styling:** Tailwind CSS (Financial-grade design system)
+- **Framework:** Angular 21 (Standalone Components, Signals)
+- **Styling:** Tailwind CSS v4 (Financial-grade design system)
 - **PDF Engine:** jsPDF
-- **Icons:** Lucide Angular
 - **State Management:** Angular Signals & RxJS
 
 ## Project Structure

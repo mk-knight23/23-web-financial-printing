@@ -1,6 +1,7 @@
 {
-  "name": "bank-cheque-generator",
-  "version": "0.0.0",
+  "name": "23-web-financial-printing",
+  "version": "2.1.0",
+  "description": "Professional bank cheque generation tool built with Angular 21",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,6 +9,11 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mk-knight23/23-web-financial-printing.git"
+  },
+  "homepage": "https://mk-knight23.github.io/23-web-financial-printing/",
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
