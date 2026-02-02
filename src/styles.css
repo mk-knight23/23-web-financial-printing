@@ -1,12 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-financial-50: #f5f7fa;
+  --color-financial-100: #e4e7eb;
+  --color-financial-200: #cbd2d9;
+  --color-financial-300: #9aa5b1;
+  --color-financial-400: #7b8794;
+  --color-financial-500: #616e7c;
+  --color-financial-600: #52606d;
+  --color-financial-700: #3e4c59;
+  --color-financial-800: #323f4b;
+  --color-financial-900: #1f2933;
+
+  --color-accent-primary: #0052cc;
+  --color-accent-secondary: #00a3bf;
+
+  --font-cheque: "Courier New", monospace;
+}
 
 :root {
   --primary: #0052cc;
   --app-bg-light: #f5f7fa;
   --app-bg-dark: #1f2933;
-  color-scheme: dark;
 }
 
 body {
@@ -14,42 +29,24 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
 }
 
-.dark {
-  --app-bg-light: #1f2933;
-  color-scheme: dark;
-}
-
-.light {
-  --app-bg-light: #f5f7fa;
-  color-scheme: light;
-}
-
 .dark body {
   @apply bg-financial-900 text-financial-50;
 }
 
-.light body {
-  @apply bg-financial-50 text-financial-900;
+@utility btn {
+  @apply px-4 py-2 rounded-lg font-semibold transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100;
 }
 
-kbd {
-  @apply px-2 py-1 text-xs font-mono bg-financial-200 dark:bg-financial-700 rounded;
+@utility btn-primary {
+  @apply bg-accent-primary text-white hover:bg-opacity-90;
 }
 
-@layer components {
-  .btn {
-    @apply px-4 py-2 rounded-lg font-semibold transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100;
-  }
-  .btn-primary {
-    @apply bg-accent-primary text-white hover:bg-opacity-90;
-  }
-  .input-field {
-    @apply w-full px-4 py-2 bg-white border border-financial-200 rounded-lg focus:ring-2 focus:ring-accent-primary focus:border-transparent outline-none transition-all dark:bg-financial-800 dark:border-financial-700;
-  }
+@utility input-field {
+  @apply w-full px-4 py-2 bg-white border border-financial-200 rounded-lg focus:ring-2 focus:ring-accent-primary focus:border-transparent outline-none transition-all dark:bg-financial-800 dark:border-financial-700;
 }
 
 @media print {
-  .no-print {
+  @utility no-print {
     display: none !important;
   }
 }
