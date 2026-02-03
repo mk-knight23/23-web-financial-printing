@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "23-web-financial-printing",
+  "framework": null,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/bank-cheque-generator"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

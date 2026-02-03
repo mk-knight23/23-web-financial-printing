@@ -33,7 +33,7 @@ export class StatsService {
         this._lastSessionDate.set(data.lastSessionDate ?? null);
       }
     } catch {
-      console.warn('Failed to load stats');
+      // Failed to load stats - using defaults
     }
   }
 
@@ -49,7 +49,7 @@ export class StatsService {
         })
       );
     } catch {
-      console.warn('Failed to save stats');
+      // Failed to save stats
     }
   }
 

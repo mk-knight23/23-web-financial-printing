@@ -44,7 +44,7 @@
                 }
               ],
               "outputHashing": "all",
-              "baseHref": "/41-Bank-Cheque-Generator/"
+              "baseHref": "/23-web-financial-printing/"
             },
             "development": {
               "optimization": false,
