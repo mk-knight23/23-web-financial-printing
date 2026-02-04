@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "financial-printing",
     "public": "dist/bank-cheque-generator",
     "ignore": [
       "firebase.json",
