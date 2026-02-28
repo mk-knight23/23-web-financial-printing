@@ -26,21 +26,217 @@ ChequeGen is designed for organizations and individuals who need a precise way t
 - **Keyboard Shortcuts** - Efficient workflow with hotkeys (Ctrl+S, Ctrl+P, etc.)
 - **Statistics Tracking** - Track cheques generated and time spent
 
-## Tech Stack
+---
 
-- **Framework:** Angular 21 (Standalone Components, Signals)
-- **Styling:** Tailwind CSS v4 (Financial-grade design system)
-- **PDF Engine:** jsPDF
-- **State Management:** Angular Signals & RxJS
+## 🏗️ Architecture
 
-## Project Structure
+### Project Structure
 
-```text
-src/app/
-├── core/services/          # Cheque calculation & conversion logic
-├── features/generator/     # Reactive forms & SVG preview components
-├── types/                  # Strict financial data interfaces
-└── styles.css              # Custom Tailwind financial components
+```
+23-web-financial-printing/
+├── src/
+│   ├── app/
+│   │   ├── core/           # Core services
+│   │   │   ├── services/
+│   │   │   │   ├── cheque-calculator.service.ts
+│   │   │   │   ├── amount-to-words.service.ts
+│   │   │   │   ├── pdf-generator.service.ts
+│   │   │   │   └── theme.service.ts
+│   │   │   └── components/  # Core UI components
+│   │   ├── features/       # Feature modules
+│   │   │   ├── generator/
+│   │   │   │   ├── components/
+│   │   │   │   │   ├── cheque-form.component.ts
+│   │   │   │   │   ├── cheque-preview.component.ts
+│   │   │   │   │   ├── bank-selector.component.ts
+│   │   │   │   │   └── amount-input.component.ts
+│   │   │   │   ├── generator.component.ts
+│   │   │   │   └── generator.routes.ts
+│   │   │   ├── statistics/
+│   │   │   │   ├── components/
+│   │   │   │   │   └── stats-card.component.ts
+│   │   │   │   ├── statistics.component.ts
+│   │   │   │   └── statistics.routes.ts
+│   │   ├── shared/         # Shared components
+│   │   │   ├── components/
+│   │   │   │   ├── button/
+│   │   │   │   ├── input/
+│   │   │   │   ├── card/
+│   │   │   │   └── badge/
+│   │   │   ├── directives/
+│   │   │   └── pipes/
+│   │   ├── types/          # TypeScript interfaces
+│   │   │   ├── cheque.model.ts
+│   │   │   ├── bank.model.ts
+│   │   │   └── statistics.model.ts
+│   │   ├── app.config.ts    # Angular app config
+│   │   ├── app.routes.ts   # App routing
+│   │   └── app.component.ts
+│   ├── styles/
+│   │   └── main.css        # Tailwind imports
+│   ├── index.html          # HTML entry point
+│   └── main.ts             # Entry point
+├── .github/workflows/      # CI/CD pipelines
+│   ├── ci.yml             # Lint and test
+│   └── deploy.yml         # Deploy to Vercel & GitHub Pages
+├── render.yaml             # Render deployment config
+├── angular.json            # Angular CLI config
+├── package.json            # Dependencies
+├── tsconfig.json           # TypeScript config
+├── tailwind.config.ts      # Tailwind config
+└── README.md               # This file
+```
+
+### Technology Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Framework** | Angular 21.1.0 (Standalone Components) |
+| **Language** | TypeScript 5.9.2 |
+| **Styling** | Tailwind CSS v4 |
+| **PDF Engine** | jsPDF 4.0.0 |
+| **Reactivity** | Angular Signals |
+| **Async** | RxJS 7.8.0 |
+| **Testing** | Vitest 4.0.8 + Angular Testing Utils |
+| **Build Tool** | Angular CLI 21.1.1 |
+
+### Key Architectural Patterns
+
+- **Standalone Components**: Modern Angular architecture with standalone components
+- **Angular Signals**: Reactive state management for real-time preview
+- **RxJS**: Async data streams for complex operations
+- **Service-Oriented**: Logic encapsulated in injectable services
+- **Lazy Loading**: Feature-based code splitting
+- **Type Safety**: Full TypeScript coverage with strict mode
+
+### State Management
+
+```
+User Input → Signal → Computed Signal → UI Update
+     ↓          ↓              ↓            ↓
+  Form Data  Reactive     SVG Preview    Live DOM
+             State
+```
+
+- **Angular Signals**: Reactive state for form data and preview
+- **RxJS**: Async operations for PDF generation and API calls
+- **Computed Signals**: Derived state (amount-to-words, formatted dates)
+- **Injectable Services**: Business logic in core services
+
+### Core Services
+
+```typescript
+{
+  chequeCalculator: "Math for MICR line formatting",
+  amountToWords: "Numeric to English words conversion",
+  pdfGenerator: "jsPDF wrapper for cheque export",
+  themeService: "Dark/light mode with localStorage persistence"
+}
+```
+
+### Cheque Generation Flow
+
+```typescript
+{
+  flow: {
+    step1: "Select bank template",
+    step2: "Fill form data (payee, amount, date, account)",
+    step3: "Real-time SVG preview with Angular Signals",
+    step4: "Auto amount-to-words conversion",
+    step5: "PDF generation via jsPDF",
+    step6: "Download/print cheque"
+  },
+  reactive: {
+    preview: "Instant SVG update on form change",
+    validation: "Real-time field validation",
+    theme: "Instant theme switching"
+  }
+}
+```
+
+### Performance Optimizations
+
+- **Angular Signals**: Efficient change detection
+- **OnPush Change Detection**: Component-level optimization
+- **Lazy Loading**: Feature-based code splitting
+- **Tree Shaking**: Angular build optimizations
+- **Minimal Bundle**: Optimized via Angular CLI
+- **SVG Rendering**: Hardware-accelerated via Canvas API
+
+### Design System
+
+```typescript
+// Financial Printing Theme
+{
+  typography: {
+    heading: "Modern sans-serif (Inter)",
+    body: "Clean, professional",
+    mono: "MICR-style numeric"
+  },
+  color: {
+    primary: "indigo-600",
+    secondary: "slate-600",
+    success: "emerald-500",
+    warning: "amber-500",
+    neutral: "slate-50"
+  },
+  spacing: {
+    form: "Optimal for cheque layout",
+    sections: "Professional financial document"
+  },
+  layout: {
+    container: "Max-width 1200px",
+    grid: "Two-column layout (form + preview)",
+    responsive: "Mobile-first breakpoints"
+  }
+}
+```
+
+### Multi-Platform Deployment
+
+| Platform | URL | Auto-Deploy |
+|----------|-----|-------------|
+| GitHub Pages | https://mk-knight23.github.io/23-web-financial-printing/ | ✅ GitHub Actions |
+| Vercel | https://23-web-financial-printing.vercel.app | ✅ GitHub Actions |
+| Render | https://23-web-financial-printing.onrender.com | ✅ render.yaml |
+| Firebase | https://web-financial-printing.web.app | Manual |
+| AWS Amplify | https://main.23-web-financial-printing.amplifyapp.com | Manual |
+
+### CI/CD Pipeline
+
+```yaml
+Push to main → CI Check → Build → Deploy
+     ↓            ↓          ↓         ↓
+  Trigger     Lint+Test   Production   Vercel/GitHub Pages
+              (Vitest)   Build
+```
+
+- **CI**: Linting and build checks
+- **Testing**: Vitest + Angular Testing Utils
+- **Build**: Production-optimized bundle via Angular CLI
+- **Deploy**: Automatic to Vercel and GitHub Pages
+
+### Cheque Specifications
+
+```typescript
+{
+  supportedBanks: {
+    SBI: "Standardized template",
+    HDFC: "Standardized template",
+    Generic: "Customizable template"
+  },
+  features: {
+    micrLine: "Magnetic Ink Character Recognition",
+    dateFormat: "ISO 8601 + localized",
+    amountWords: "English, with currency formatting",
+    signature: "Placeholder for signature"
+  },
+  pdfExport: {
+    dpi: "300 DPI (print quality)",
+    format: "A4 or custom cheque size",
+    compression: "Optimized for email sharing"
+  }
+}
 ```
 
 ## Setup & Build Instructions
