@@ -46,7 +46,7 @@ export class StatsService {
           totalPrints: this._totalPrints(),
           totalTimeSpent: this._totalTimeSpent(),
           lastSessionDate: this._lastSessionDate(),
-        })
+        }),
       );
     } catch {
       // Failed to save stats
@@ -54,18 +54,18 @@ export class StatsService {
   }
 
   recordChequeGenerated(): void {
-    this._totalChequesGenerated.update(v => v + 1);
+    this._totalChequesGenerated.update((v) => v + 1);
     this._lastSessionDate.set(new Date().toISOString());
     this.saveToStorage();
   }
 
   recordPrint(): void {
-    this._totalPrints.update(v => v + 1);
+    this._totalPrints.update((v) => v + 1);
     this.saveToStorage();
   }
 
   addTimeSpent(seconds: number): void {
-    this._totalTimeSpent.update(v => v + seconds);
+    this._totalTimeSpent.update((v) => v + seconds);
     this.saveToStorage();
   }
 

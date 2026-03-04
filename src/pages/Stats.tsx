@@ -3,7 +3,7 @@ import { BarChart3, TrendingUp, Target } from 'lucide-react';
 
 export default function Stats() {
   const userStore = useUserStore();
-  
+
   return (
     <div className="space-y-8 p-6">
       <h2 className="text-3xl font-bold text-white mb-6">Statistics</h2>

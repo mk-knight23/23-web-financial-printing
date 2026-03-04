@@ -56,7 +56,7 @@ export class SettingsService {
           soundEnabled: this._soundEnabled(),
           theme: this._theme(),
           reducedMotion: this._reducedMotion(),
-        })
+        }),
       );
     } catch {
       // Failed to save settings
@@ -64,7 +64,7 @@ export class SettingsService {
   }
 
   toggleSound(): void {
-    this._soundEnabled.update(v => !v);
+    this._soundEnabled.update((v) => !v);
   }
 
   setTheme(value: ThemeMode): void {
@@ -92,7 +92,7 @@ export class SettingsService {
   }
 
   toggleHelp(): void {
-    this._showHelp.update(v => !v);
+    this._showHelp.update((v) => !v);
   }
 
   setReducedMotion(value: boolean): void {

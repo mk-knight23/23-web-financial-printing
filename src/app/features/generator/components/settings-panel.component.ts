@@ -11,12 +11,21 @@ import { KeyboardService } from '../../../core/services/keyboard.service';
   imports: [CommonModule],
   template: `
     @if (settingsService.showHelp()) {
-      <div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" (click)="close()">
-        <div class="bg-white dark:bg-financial-800 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" (click)="$event.stopPropagation()">
+      <div
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+        (click)="close()"
+      >
+        <div
+          class="bg-white dark:bg-financial-800 rounded-3xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+          (click)="$event.stopPropagation()"
+        >
           <div class="p-8">
             <div class="flex justify-between items-center mb-8">
               <h2 class="text-3xl font-black dark:text-white">⚙️ Settings</h2>
-              <button (click)="close()" class="p-2 rounded-full hover:bg-financial-100 dark:hover:bg-financial-700 transition-colors">
+              <button
+                (click)="close()"
+                class="p-2 rounded-full hover:bg-financial-100 dark:hover:bg-financial-700 transition-colors"
+              >
                 <span class="text-2xl">✕</span>
               </button>
             </div>
@@ -28,9 +37,11 @@ import { KeyboardService } from '../../../core/services/keyboard.service';
                   @for (mode of themeModes; track mode.value) {
                     <button
                       (click)="setTheme(mode.value)"
-                      [class]="settingsService.theme() === mode.value
-                        ? 'bg-accent-primary text-white'
-                        : 'bg-financial-100 dark:bg-financial-700 text-financial-700 dark:text-financial-200 hover:bg-financial-200 dark:hover:bg-financial-600'"
+                      [class]="
+                        settingsService.theme() === mode.value
+                          ? 'bg-accent-primary text-white'
+                          : 'bg-financial-100 dark:bg-financial-700 text-financial-700 dark:text-financial-200 hover:bg-financial-200 dark:hover:bg-financial-600'
+                      "
                       class="px-4 py-2 rounded-xl font-medium transition-all"
                     >
                       {{ mode.label }}
@@ -46,7 +57,11 @@ import { KeyboardService } from '../../../core/services/keyboard.service';
                   class="w-full flex items-center justify-between p-4 bg-financial-50 dark:bg-financial-900/50 rounded-2xl"
                 >
                   <span class="font-medium dark:text-white">Enable Sound</span>
-                  <span [class]="settingsService.soundEnabled() ? 'text-emerald-500' : 'text-financial-400'">
+                  <span
+                    [class]="
+                      settingsService.soundEnabled() ? 'text-emerald-500' : 'text-financial-400'
+                    "
+                  >
                     {{ settingsService.soundEnabled() ? '✓ Enabled' : '✕ Disabled' }}
                   </span>
                 </button>
@@ -56,20 +71,34 @@ import { KeyboardService } from '../../../core/services/keyboard.service';
                 <h3 class="text-lg font-bold dark:text-white">📊 Statistics</h3>
                 <div class="grid grid-cols-2 gap-4">
                   <div class="p-4 bg-financial-50 dark:bg-financial-900/50 rounded-2xl text-center">
-                    <div class="text-3xl font-black text-accent-primary">{{ statsService.totalChequesGenerated() }}</div>
-                    <div class="text-sm text-financial-500 dark:text-financial-400">Cheques Generated</div>
+                    <div class="text-3xl font-black text-accent-primary">
+                      {{ statsService.totalChequesGenerated() }}
+                    </div>
+                    <div class="text-sm text-financial-500 dark:text-financial-400">
+                      Cheques Generated
+                    </div>
                   </div>
                   <div class="p-4 bg-financial-50 dark:bg-financial-900/50 rounded-2xl text-center">
-                    <div class="text-3xl font-black text-accent-secondary">{{ statsService.totalPrints() }}</div>
-                    <div class="text-sm text-financial-500 dark:text-financial-400">Prints / Exports</div>
+                    <div class="text-3xl font-black text-accent-secondary">
+                      {{ statsService.totalPrints() }}
+                    </div>
+                    <div class="text-sm text-financial-500 dark:text-financial-400">
+                      Prints / Exports
+                    </div>
                   </div>
                   <div class="p-4 bg-financial-50 dark:bg-financial-900/50 rounded-2xl text-center">
-                    <div class="text-3xl font-black text-accent-primary">{{ statsService.formatTime() }}</div>
+                    <div class="text-3xl font-black text-accent-primary">
+                      {{ statsService.formatTime() }}
+                    </div>
                     <div class="text-sm text-financial-500 dark:text-financial-400">Time Spent</div>
                   </div>
                   <div class="p-4 bg-financial-50 dark:bg-financial-900/50 rounded-2xl text-center">
-                    <div class="text-3xl font-black text-accent-secondary">{{ statsService.lastSessionDate() ? 'Today' : 'Never' }}</div>
-                    <div class="text-sm text-financial-500 dark:text-financial-400">Last Session</div>
+                    <div class="text-3xl font-black text-accent-secondary">
+                      {{ statsService.lastSessionDate() ? 'Today' : 'Never' }}
+                    </div>
+                    <div class="text-sm text-financial-500 dark:text-financial-400">
+                      Last Session
+                    </div>
                   </div>
                 </div>
                 <button
@@ -84,9 +113,14 @@ import { KeyboardService } from '../../../core/services/keyboard.service';
                 <h3 class="text-lg font-bold dark:text-white">⌨️ Keyboard Shortcuts</h3>
                 <div class="space-y-2">
                   @for (shortcut of keyboardService.getShortcuts(); track shortcut.key) {
-                    <div class="flex items-center justify-between p-3 bg-financial-50 dark:bg-financial-900/50 rounded-xl">
+                    <div
+                      class="flex items-center justify-between p-3 bg-financial-50 dark:bg-financial-900/50 rounded-xl"
+                    >
                       <span class="dark:text-white">{{ shortcut.action }}</span>
-                      <kbd class="px-3 py-1 text-sm font-mono bg-financial-200 dark:bg-financial-700 rounded-lg dark:text-white">{{ shortcut.key }}</kbd>
+                      <kbd
+                        class="px-3 py-1 text-sm font-mono bg-financial-200 dark:bg-financial-700 rounded-lg dark:text-white"
+                        >{{ shortcut.key }}</kbd
+                      >
                     </div>
                   }
                 </div>
@@ -103,11 +137,13 @@ import { KeyboardService } from '../../../core/services/keyboard.service';
       </div>
     }
   `,
-  styles: [`
-    :host {
-      display: contents;
-    }
-  `]
+  styles: [
+    `
+      :host {
+        display: contents;
+      }
+    `,
+  ],
 })
 export class SettingsPanelComponent {
   settingsService = inject(SettingsService);

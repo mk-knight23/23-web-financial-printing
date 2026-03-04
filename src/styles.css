@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --color-financial-50: #f5f7fa;
@@ -15,7 +15,7 @@
   --color-accent-primary: #0052cc;
   --color-accent-secondary: #00a3bf;
 
-  --font-cheque: "Courier New", monospace;
+  --font-cheque: 'Courier New', monospace;
 }
 
 :root {

@@ -16,12 +16,12 @@ export class KeyboardService {
   readonly lastAction = this._lastAction.asReadonly();
 
   private actionMap: Record<string, KeyAction> = {
-    'KeyS': 'save',
-    'KeyP': 'print',
-    'Escape': 'close',
-    'KeyH': 'help',
+    KeyS: 'save',
+    KeyP: 'print',
+    Escape: 'close',
+    KeyH: 'help',
     '/': 'help',
-    'KeyK': 'help',
+    KeyK: 'help',
     '?': 'help',
   };
 
