@@ -3,6 +3,7 @@
   "version": "2.1.0",
   "description": "Professional bank cheque generation tool built with Angular 21",
   "scripts": {
+    "production": "npm run build && npm start",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
