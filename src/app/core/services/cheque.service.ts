@@ -32,6 +32,51 @@ export const BANK_TEMPLATES: BankTemplate[] = [
       signature: { x: 610, y: 275, fontSize: 16 },
     },
   },
+  {
+    id: 'hdfc',
+    name: 'HDFC Bank',
+    logo: '🟦',
+    color: '#004b87',
+    dimensions: { width: 800, height: 350 },
+    fields: {
+      date: { x: 630, y: 38, fontSize: 16 },
+      payee: { x: 85, y: 108, fontSize: 18 },
+      amountWords: { x: 105, y: 158, fontSize: 14 },
+      amountNumber: { x: 635, y: 138, fontSize: 20 },
+      accountNumber: { x: 85, y: 248, fontSize: 16 },
+      signature: { x: 605, y: 278, fontSize: 16 },
+    },
+  },
+  {
+    id: 'icici',
+    name: 'ICICI Bank',
+    logo: '🟠',
+    color: '#f37920',
+    dimensions: { width: 800, height: 350 },
+    fields: {
+      date: { x: 625, y: 42, fontSize: 16 },
+      payee: { x: 82, y: 112, fontSize: 18 },
+      amountWords: { x: 102, y: 162, fontSize: 14 },
+      amountNumber: { x: 632, y: 142, fontSize: 20 },
+      accountNumber: { x: 82, y: 252, fontSize: 16 },
+      signature: { x: 608, y: 282, fontSize: 16 },
+    },
+  },
+  {
+    id: 'axis',
+    name: 'Axis Bank',
+    logo: '🟣',
+    color: '#97144d',
+    dimensions: { width: 800, height: 350 },
+    fields: {
+      date: { x: 635, y: 36, fontSize: 16 },
+      payee: { x: 88, y: 106, fontSize: 18 },
+      amountWords: { x: 108, y: 156, fontSize: 14 },
+      amountNumber: { x: 638, y: 136, fontSize: 20 },
+      accountNumber: { x: 88, y: 246, fontSize: 16 },
+      signature: { x: 612, y: 276, fontSize: 16 },
+    },
+  },
 ];
 
 @Injectable({
