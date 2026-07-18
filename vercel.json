@@ -6,7 +6,7 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist/bank-cheque-generator/browser"
+        "distDir": "dist/output"
       }
     }
   ],
