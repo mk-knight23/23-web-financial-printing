@@ -20,33 +20,81 @@
 
 :root {
   --primary: #0052cc;
-  --app-bg-light: #f5f7fa;
-  --app-bg-dark: #1f2933;
+  --app-bg-light: #dde3ed;
+  --app-bg-dark: #1a1f2e;
 }
 
 body {
-  @apply bg-financial-50 text-financial-900;
+  background: #dde3ed;
+  color: #1f2933;
   font-family: 'Inter', system-ui, sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: -200px;
+  right: -100px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(0,82,204,0.08), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -200px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0,163,191,0.06), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .dark body {
-  @apply bg-financial-900 text-financial-50;
+  background: #1a1f2e;
+  color: #f5f7fa;
 }
 
 @utility btn {
-  @apply px-4 py-2 rounded-lg font-semibold transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100;
+  @apply px-4 py-2 rounded-full font-semibold transition-all active:scale-95 disabled:opacity-50 disabled:active:scale-100;
 }
 
 @utility btn-primary {
-  @apply bg-accent-primary text-white hover:bg-opacity-90;
+  background: linear-gradient(135deg, #0052cc, #00a3bf);
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 82, 204, 0.2);
 }
 
-@utility input-field {
-  @apply w-full px-4 py-2 bg-white border border-financial-200 rounded-lg focus:ring-2 focus:ring-accent-primary focus:border-transparent outline-none transition-all dark:bg-financial-800 dark:border-financial-700;
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(0, 82, 204, 0.3);
+}
+
+/* Glass panels */
+.bg-white,
+[class*="bg-financial-50"] {
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+}
+
+/* Cheque preview retains solid for print accuracy */
+.cheque-preview {
+  background: white !important;
+  backdrop-filter: none !important;
 }
 
 @media print {
-  @utility no-print {
-    display: none !important;
-  }
+  body { background: white !important; }
+  body::before, body::after { display: none; }
 }
