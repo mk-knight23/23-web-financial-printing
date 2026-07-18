@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://23-web-financial-printing.vercel.app/sitemap.xml
