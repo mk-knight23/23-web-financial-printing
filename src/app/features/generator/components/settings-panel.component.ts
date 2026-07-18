@@ -129,7 +129,7 @@ import { KeyboardService } from '../../../core/services/keyboard.service';
 
             <div class="mt-8 pt-6 border-t border-financial-200 dark:border-financial-700">
               <p class="text-center text-financial-500 dark:text-financial-400 text-sm">
-                ChequeGen v1.0.0 • Built with Angular 19 & Signals
+                MK ChequeCraft v1.0.0 • Built with Angular 19 & Signals
               </p>
             </div>
           </div>

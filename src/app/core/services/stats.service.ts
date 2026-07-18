@@ -53,7 +53,7 @@ export class StatsService {
     }
   }
 
-  recordChequeGenerated(): void {
+  recordMK ChequeCrafterated(): void {
     this._totalChequesGenerated.update((v) => v + 1);
     this._lastSessionDate.set(new Date().toISOString());
     this.saveToStorage();
