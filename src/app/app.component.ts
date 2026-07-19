@@ -26,8 +26,8 @@ import { KeyboardService } from './core/services/keyboard.service';
           <div class="bg-accent-primary p-2 rounded-xl">
             <span class="text-white font-bold text-xl">CQ</span>
           </div>
-          <h1 class="text-xl font-black tracking-tight dark:text-white">
-            Cheque<span class="text-accent-primary">Gen</span>
+          <h1 class="text-xl font-black tracking-tight uppercase dark:text-white">
+            MK_<span class="text-accent-primary">ChequeCraft</span>
           </h1>
         </div>
 
@@ -101,7 +101,9 @@ import { KeyboardService } from './core/services/keyboard.service';
       <footer
         class="mt-20 border-t border-financial-200 dark:border-financial-700 py-12 text-center text-financial-400 text-sm"
       >
-        <p>&copy; 2026 MK ChequeCraft Architect. Built with Angular 19 & Signals.</p>
+        <p>
+          &copy; 2026 <a href="https://www.mkazi.live" target="_blank" rel="noopener noreferrer" class="hover:text-accent-primary transition-colors">Qazi Musharof — Kazi Developer</a>. All rights reserved. Built with Angular 19 & Signals.
+        </p>
       </footer>
 
       <app-settings-panel></app-settings-panel>

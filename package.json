@@ -8,7 +8,7 @@
     "start": "ng serve",
     "build": "ng build && mkdir -p dist/output && cp -r dist/bank-cheque-generator/browser/. dist/output/",
     "watch": "ng build --watch --configuration development",
-    "test": "vitest run",
+    "test": "ng test",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
